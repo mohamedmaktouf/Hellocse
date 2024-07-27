@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('image');
             $table->tinyInteger('status')->comment('1: inactive , 2: waiting , 3: active');
         });
     }
