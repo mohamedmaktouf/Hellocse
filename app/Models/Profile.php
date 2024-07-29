@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\Status;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -19,4 +21,13 @@ use Illuminate\Support\Carbon;
 class Profile extends Model
 {
     use HasFactory;
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeActive(Builder $query) : mixed
+    {
+        return $query->where('status', Status::ACTIVE);
+    }
 }

@@ -17,4 +17,12 @@ class ProfileService
         return $this->profileRepository->store($profileDTO);
     }
 
+    /**
+     * @return mixed
+     */
+    public function list() : mixed
+    {
+        return $this->profileRepository->list();
+    }
+
 }
