@@ -22,7 +22,8 @@ class ProfileController extends Controller
      */
     public function store(CreateProfileRequest $request) : ProfileResource
     {
-        $profileDTO = new ProfileDTO($request->string('first_name') , $request->string('last_name') ,  $request->file('image'));
+        $profileDTO = new ProfileDTO($request->string('first_name') , $request->string('last_name') ,
+            $request->file('image') , $request->integer('status'));
         $profile = $this->profileService->store($profileDTO);
         return new ProfileResource($profile);
     }
@@ -34,5 +35,12 @@ class ProfileController extends Controller
     {
         $profiles = $this->profileService->list();
         return ProfileResource::collection($profiles);
+    }
+    public function update(CreateProfileRequest $request , $id) : ProfileResource
+    {
+        $profileDTO = new ProfileDTO($request->string('first_name') , $request->string('last_name') ,
+            $request->file('image') , $request->integer('status'));
+        $profile = $this->profileService->update($profileDTO , $id);
+        return new ProfileResource($profile);
     }
 }

@@ -24,5 +24,9 @@ class ProfileService
     {
         return $this->profileRepository->list();
     }
+    public function update( ProfileDTO $profileDTO , int $id) : Profile
+    {
+        return $this->profileRepository->update($profileDTO, $id);
+    }
 
 }

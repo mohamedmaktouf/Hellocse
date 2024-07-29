@@ -103,14 +103,11 @@
                 "summary": "Create a new Profile",
                 "tags": ["Profiles"],
                 "parameters": [
+
+                ],
+                "security": [
                     {
-                        "name": "token",
-                        "in": "header",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "bearer token for authentication"
+                        "bearerAuth": []
                     }
                 ],
                 "requestBody": {
@@ -132,9 +129,13 @@
                                         "type": "string",
                                         "format": "binary",
                                         "description": "Image of the profile"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "enum": [1 , 2 , 3]
                                     }
                                 },
-                                "required": ["nom", "prenom", "image", "statut"]
+                                "required": []
                             }
                         }
                     }
@@ -154,7 +155,7 @@
             }
         },
         "/api/profiles/{id}": {
-            "put": {
+            "post": {
                 "summary": "Update a Profile by ID",
                 "tags": ["Profiles"],
                 "parameters": [
@@ -168,12 +169,38 @@
                         "description": "The Profile ID"
                     }
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+
                 "requestBody": {
-                    "required": true,
+                    "required": false,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Profile"
+                                "type": "object",
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "description": "name of the profile"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "description": "last name of the profile"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "description": "Image of the profile"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "enum": [1 , 2 , 3]
+                                    }
+                                },
+                                "required": []
                             }
                         }
                     }
@@ -220,6 +247,13 @@
         }
     },
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
         "schemas": {
             "Profile": {
                 "type": "object",
