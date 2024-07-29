@@ -6,6 +6,7 @@ use App\DTOs\ProfileDTO;
 use App\Http\Requests\CreateProfileRequest;
 use App\Http\Resources\ProfileResource;
 use App\Services\ProfileService;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\UploadedFile;
 
 class ProfileController extends Controller
@@ -24,5 +25,14 @@ class ProfileController extends Controller
         $profileDTO = new ProfileDTO($request->string('first_name') , $request->string('last_name') ,  $request->file('image'));
         $profile = $this->profileService->store($profileDTO);
         return new ProfileResource($profile);
+    }
+
+    /**
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function list() : AnonymousResourceCollection
+    {
+        $profiles = $this->profileService->list();
+        return ProfileResource::collection($profiles);
     }
 }

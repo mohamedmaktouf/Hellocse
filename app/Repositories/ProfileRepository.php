@@ -34,4 +34,12 @@ class ProfileRepository
 
     }
 
+    /**
+     * @return mixed
+     */
+    public function list() : mixed
+    {
+        return Profile::active()->get();
+    }
+
 }
