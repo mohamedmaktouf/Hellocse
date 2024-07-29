@@ -24,7 +24,7 @@ class UserDTO
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public function toArray() : array
     {

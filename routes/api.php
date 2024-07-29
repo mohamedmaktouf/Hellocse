@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+
 Route::post('login', [\App\Http\Controllers\UserController::class, 'login']);
+Route::prefix('profiles')->group( function () {
+    Route::post('/', [\App\Http\Controllers\ProfileController::class, 'store'])->middleware('auth:sanctum');
+});

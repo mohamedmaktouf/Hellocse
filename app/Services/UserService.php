@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\DTOs\UserDTO;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserService
@@ -16,7 +17,11 @@ class UserService
     {
         if(Auth::attempt($userDTO->toArray())){
             $user = Auth::user();
-            return  $user->createToken('MyApp')->plainTextToken;
+            if ($user instanceof User){
+                $token =  $user->createToken('bearer')->plainTextToken;
+                return $token;
+            }
+
         }
         return null;
     }
