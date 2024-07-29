@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function login(LoginUserRequest $request)
     {
-        $user = new UserDTO($request->email, $request->password);
+        $user = new UserDTO($request->string('email'), $request->string('password'));
         $result = $this->userService->login($user);
         if (!$result) {
             return response()->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);

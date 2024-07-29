@@ -106,19 +106,35 @@
                     {
                         "name": "token",
                         "in": "header",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "string"
                         },
-                        "description": "API key for authentication"
+                        "description": "bearer token for authentication"
                     }
                 ],
                 "requestBody": {
-                    "required": true,
+                    "required": false,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Profile"
+                                "type": "object",
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "description": "name of the profile"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "description": "last name of the profile"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "description": "Image of the profile"
+                                    }
+                                },
+                                "required": ["nom", "prenom", "image", "statut"]
                             }
                         }
                     }
