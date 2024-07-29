@@ -51,17 +51,9 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "access_token": {
+                                        "token": {
                                             "type": "string",
-                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-                                        },
-                                        "token_type": {
-                                            "type": "string",
-                                            "example": "Bearer"
-                                        },
-                                        "expires_in": {
-                                            "type": "integer",
-                                            "example": 3600
+                                            "example": "5|f3UMNtliv0ZseGuzzZWEyGFdMElJvYCW5pb45Ole94ac8ea6"
                                         }
                                     }
                                 }
