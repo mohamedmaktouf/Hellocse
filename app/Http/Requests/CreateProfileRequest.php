@@ -25,6 +25,7 @@ class CreateProfileRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:1,2,3',
         ];
     }
 }

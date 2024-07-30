@@ -24,5 +24,13 @@ class ProfileService
     {
         return $this->profileRepository->list();
     }
+    public function update( ProfileDTO $profileDTO , int $id) : Profile
+    {
+        return $this->profileRepository->update($profileDTO, $id);
+    }
+    public function delete(int $profileId) : void
+    {
+        $this->profileRepository->delete($profileId);
+    }
 
 }
