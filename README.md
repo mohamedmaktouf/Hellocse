@@ -76,7 +76,7 @@ How to run the application locally:
     php artisan migrate
     ```
 
-2. **Run the database seeders (if any):**
+2. **Run the database seeders :**
 
     ```bash
     php artisan db:seed
