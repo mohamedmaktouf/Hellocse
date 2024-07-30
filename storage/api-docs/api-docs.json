@@ -150,6 +150,9 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
                     }
                 }
             }
@@ -218,6 +221,9 @@
                     },
                     "404": {
                         "description": "Profile not found"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
                     }
                 }
             },
@@ -235,12 +241,20 @@
                         "description": "The Profile ID"
                     }
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "responses": {
-                    "204": {
+                    "200": {
                         "description": "Profile deleted successfully"
                     },
                     "404": {
                         "description": "Profile not found"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
                     }
                 }
             }

@@ -28,5 +28,9 @@ class ProfileService
     {
         return $this->profileRepository->update($profileDTO, $id);
     }
+    public function delete(int $profileId) : void
+    {
+        $this->profileRepository->delete($profileId);
+    }
 
 }
